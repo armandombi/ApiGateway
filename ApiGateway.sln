@@ -10,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentApi.Core", "PaymentApi.Core\PaymentApi.Core.csproj", "{672EC2F7-9A7D-4813-86BD-92C7AE9EBF32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentApi.Infrastructure", "PaymentApi.Infrastructure\PaymentApi.Infrastructure.csproj", "{7B9FE4BE-F8C0-4CC9-B535-2754B96FE4F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +24,14 @@ Global
 		{5EE3DB9F-886A-4AB2-92B5-DD98ED3546B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EE3DB9F-886A-4AB2-92B5-DD98ED3546B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EE3DB9F-886A-4AB2-92B5-DD98ED3546B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{672EC2F7-9A7D-4813-86BD-92C7AE9EBF32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{672EC2F7-9A7D-4813-86BD-92C7AE9EBF32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{672EC2F7-9A7D-4813-86BD-92C7AE9EBF32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{672EC2F7-9A7D-4813-86BD-92C7AE9EBF32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B9FE4BE-F8C0-4CC9-B535-2754B96FE4F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B9FE4BE-F8C0-4CC9-B535-2754B96FE4F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B9FE4BE-F8C0-4CC9-B535-2754B96FE4F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B9FE4BE-F8C0-4CC9-B535-2754B96FE4F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
