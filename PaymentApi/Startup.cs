@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Versioning;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PaymentApi.Extensions;
+using PaymentApi.Extensions.Swagger;
 using Serilog;
 
 namespace PaymentApi
@@ -19,10 +16,13 @@ namespace PaymentApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddApiVersioningOptions();
+            services.AddSwaggerOptions();
+            services.AddScopedServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionProvider apiVersion)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider apiVersion)
         {
             if (env.IsDevelopment())
             {
@@ -32,6 +32,7 @@ namespace PaymentApi
             app.UseSerilogRequestLogging();
             app.UseHttpsRedirection();
             app.UseRouting();
+            app.UseSwaggerGen(apiVersion);
 
             app.UseEndpoints(endpoints =>
             {

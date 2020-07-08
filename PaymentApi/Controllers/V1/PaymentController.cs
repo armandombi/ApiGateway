@@ -1,14 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PaymentApi.Core.Interfaces;
 using PaymentApi.Core.Models;
+using Serilog;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.Reflection;
+using System.Threading.Tasks;
 
 namespace PaymentApi.Controllers.V1
 {
@@ -24,12 +23,24 @@ namespace PaymentApi.Controllers.V1
             _paymentService = paymentService;
         }
 
-        
+
         [HttpPost("{id:guid}")]
         public async Task<IActionResult> Process([FromRoute] Guid id, [FromBody][Required] PaymentRequest request)
         {
-            return Ok();
+            try
+            {
+                if (!await _paymentService.ProcessPayment(id, request))
+                    return BadRequest($"Failed to process payment {id}");
+
+                var path = HttpContext.Request.Path.Value;
+                return Created($"{path}", null);
+            }
+            catch (Exception exception)
+            {
+                Log.Error($"{MethodBase.GetCurrentMethod()?.DeclaringType} failed with exception {JsonConvert.SerializeObject(exception)}");
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
-        
+
     }
 }
