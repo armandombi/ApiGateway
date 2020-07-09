@@ -7,7 +7,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace PaymentApi.Extensions.Swagger
 {
-    public class ConfigureSwaggerOptions : IConfigureOptions<SwaggerGenOptions>
+    internal class ConfigureSwaggerOptions : IConfigureOptions<SwaggerGenOptions>
     {
         readonly IApiVersionDescriptionProvider _provider;
         readonly IConfiguration _configuration;

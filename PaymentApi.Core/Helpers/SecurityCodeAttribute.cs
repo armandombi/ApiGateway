@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PaymentApi.Core.Helpers
 {
-    class SecurityCodeAttribute : ValidationAttribute
+    internal class SecurityCodeAttribute : ValidationAttribute
     {
         public override bool IsValid(object value)
         {

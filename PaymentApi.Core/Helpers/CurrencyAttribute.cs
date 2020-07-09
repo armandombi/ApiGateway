@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace PaymentApi.Core.Helpers
 {
-    public class CurrencyAttribute : ValidationAttribute
+    internal class CurrencyAttribute : ValidationAttribute
     {
         public override bool IsValid(object value)
         {
