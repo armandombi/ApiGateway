@@ -9,8 +9,17 @@ using PaymentApi.Infrastructure.Data;
 
 namespace PaymentApi.Extensions
 {
+    /// <summary>
+    /// Extension to handle database setup
+    /// </summary>
     public static class DatabaseExtensions
     {
+        /// <summary>
+        /// Adds the necessary configuration to use MongoDB
+        /// </summary>
+        /// <param name="services">The API service collection</param>
+        /// <param name="configuration">The application configuration properties</param>
+        /// <returns></returns>
         public static IServiceCollection AddMongoDb(this IServiceCollection services, IConfiguration configuration)
         {
             BsonDefaults.GuidRepresentation = GuidRepresentation.Standard;

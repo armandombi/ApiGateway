@@ -8,6 +8,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using PaymentApi.Core.Models.DTO;
 
 namespace PaymentApi.Controllers.V1
@@ -18,6 +19,7 @@ namespace PaymentApi.Controllers.V1
     [Route("v{version:apiVersion}/[controller]")]
     [ApiVersion("1.0")]
     [ApiController]
+    [Authorize]
     public class PaymentController : ControllerBase
     {
         private readonly IPaymentService _paymentService;

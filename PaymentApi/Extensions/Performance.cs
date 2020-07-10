@@ -6,8 +6,15 @@ using System.Linq;
 
 namespace PaymentApi.Extensions
 {
+    /// <summary>
+    /// Extension to handle performance configuration for the API
+    /// </summary>
     internal static class PerformanceExtension
     {
+        /// <summary>
+        /// Adds configurations to help API performance
+        /// </summary>
+        /// <param name="services">The API service collection</param>
         internal static void AddPerformance(this IServiceCollection services)
         {
 

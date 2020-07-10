@@ -16,6 +16,7 @@ namespace PaymentApi.Core.Models.DTO
             Amount = payment.Amount;
             Currency = payment.Currency;
             CardNumber = payment.CardNumber.MaskCardNumber();
+            CardHolderName = CardHolderName;
             BankPaymentId = payment.BankPaymentId;
         }
 
@@ -25,6 +26,7 @@ namespace PaymentApi.Core.Models.DTO
         public decimal Amount { get; set; }
         public string Currency { get; set; }
         public string CardNumber { get; set; }
+        public string CardHolderName { get; set; }
         public Guid BankPaymentId { get; set; }
     }
 }

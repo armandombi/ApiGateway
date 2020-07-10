@@ -9,7 +9,7 @@ namespace PaymentApi.Extensions
     public static class ApiVersioningExtension
     {
         /// <summary>
-        /// This extension method adds the required setting to configure versioning on the api
+        /// Adds the required setting to configure versioning on the api
         /// </summary>
         /// <param name="services"></param>
         public static void AddApiVersioningOptions(this IServiceCollection services)

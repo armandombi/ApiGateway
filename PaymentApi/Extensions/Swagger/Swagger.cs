@@ -14,8 +14,15 @@ using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace PaymentApi.Extensions.Swagger
 {
+    /// <summary>
+    /// Extension to handle swagger configuration
+    /// </summary>
     public static class SwaggerExtensions
     {
+        /// <summary>
+        /// Adds swagger configuration to the API service configuration
+        /// </summary>
+        /// <param name="services"></param>
         public static void AddSwaggerOptions(this IServiceCollection services)
         {
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
@@ -27,16 +34,21 @@ namespace PaymentApi.Extensions.Swagger
                 });
         }
 
-        public static void UseSwaggerGen(this IApplicationBuilder applicationBuilder, IApiVersionDescriptionProvider apiVersion)
+        /// <summary>
+        /// Adds swagger settings to the request pipeline
+        /// </summary>
+        /// <param name="app">The API application builder</param>
+        /// <param name="provider">The <see cref="IApiVersionDescriptionProvider">provider</see> used to generate Swagger documents.</param>
+        public static void UseSwaggerGen(this IApplicationBuilder app, IApiVersionDescriptionProvider provider)
         {
 
-            applicationBuilder.UseSwagger();
-            applicationBuilder.UseSwaggerUI(
+            app.UseSwagger();
+            app.UseSwaggerUI(
                 options =>
                 {
-                    for (var i = apiVersion.ApiVersionDescriptions.Count - 1; i >= 0; i--)
+                    for (var i = provider.ApiVersionDescriptions.Count - 1; i >= 0; i--)
                     {
-                        var description = apiVersion.ApiVersionDescriptions[i];
+                        var description = provider.ApiVersionDescriptions[i];
                         options.SwaggerEndpoint($"swagger/{description.GroupName}/swagger.json", $"Payment API {description.GroupName}");
                         options.RoutePrefix = string.Empty;
                         options.DocExpansion(DocExpansion.None);

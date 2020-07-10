@@ -6,6 +6,9 @@ using System.Linq;
 
 namespace PaymentApi.Extensions.Swagger
 {
+    /// <summary>
+    /// Operation filter to set default swagger values
+    /// </summary>
     public class SwaggerDefaultValues : IOperationFilter
     {
         /// <summary>

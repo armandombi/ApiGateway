@@ -14,6 +14,8 @@ namespace PaymentApi.Core.Models
         public string Currency { get; set; }
         [Required, CreditCard]
         public string CardNumber { get; set; }
+        [Required, MinLength(2), MaxLength(200)]
+        public string CardHolderName { get; set; }
         [Required, Range(1, 12)]
         public int ExpiryMonth { get; set; }
         [Required, Range(2020, 2030)]
