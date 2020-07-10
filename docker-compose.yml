@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  mongodb:
+    image: mongo:latest
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 28EGz5qEP2p7
+    ports:
+      - 27017:27017
+
+  bankapi:
+    image: ${DOCKER_REGISTRY-}bankapi
+    build:
+      context: .
+      dockerfile: BankApiSimulator/Dockerfile
+
+  paymentapi:
+    image: ${DOCKER_REGISTRY-}paymentapi
+    build:
+      context: .
+      dockerfile: PaymentApi/Dockerfile
+    depends_on:
+      - mongodb
+      - bankapi
