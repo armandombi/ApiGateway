@@ -4,11 +4,6 @@ services:
   mongodb:
     image: mongo:latest
     restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: 28EGz5qEP2p7
-    ports:
-      - 27017:27017
 
   bankapi:
     image: ${DOCKER_REGISTRY-}bankapi
