@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using PaymentApi.Core.Interfaces;
-using PaymentApi.Core.Services;
 using PaymentApi.Infrastructure.Services;
 
 namespace PaymentApi.Extensions
@@ -17,7 +16,7 @@ namespace PaymentApi.Extensions
         /// <summary>
         /// Adding Scoped services to application startup
         /// </summary>
-        /// <param name="services">The API <see cref="IServiceCollection">service collection</see> </param>
+        /// <param name="services">The API service collection</param>
         public static void AddScopedServices(this IServiceCollection services)
         {
             services

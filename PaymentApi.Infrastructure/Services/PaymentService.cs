@@ -1,15 +1,15 @@
-﻿using MongoDB.Driver;
+﻿using System;
+using System.Reflection;
+using System.Threading.Tasks;
+using MongoDB.Driver;
 using Newtonsoft.Json;
 using PaymentApi.Core.Interfaces;
 using PaymentApi.Core.Models;
 using PaymentApi.Core.Models.Enums;
 using PaymentApi.Infrastructure.Data;
 using Serilog;
-using System;
-using System.Reflection;
-using System.Threading.Tasks;
 
-namespace PaymentApi.Core.Services
+namespace PaymentApi.Infrastructure.Services
 {
     public class PaymentService : IPaymentService
     {
@@ -24,7 +24,7 @@ namespace PaymentApi.Core.Services
         /// <summary>
         /// Method to process a payment from a payment request.
         /// </summary>
-        /// <param name="id">The unique payment identifier</param>
+        /// <param name="id">The payment unique identifier</param>
         /// <param name="request">The information about the payment</param>
         /// <returns>True if the payment already exists or it's successfully processed or False if the payment fails</returns>
         public async Task<bool> ProcessPayment(Guid id, PaymentRequest request)
@@ -61,6 +61,16 @@ namespace PaymentApi.Core.Services
                 Log.Error($"{MethodBase.GetCurrentMethod()?.DeclaringType} failed with exception {JsonConvert.SerializeObject(exception)}");
                 throw;
             }
+        }
+
+        /// <summary>
+        /// Method to retrieve and return a payment details based on the unique payment identifier
+        /// </summary>
+        /// <param name="id">The payment unique identifier</param>
+        /// <returns>The payment details or a null object if the payment is not found</returns>
+        public async Task<PaymentDocument> GetPayment(Guid id)
+        {
+            return await (await _db.PaymentsCollection.FindAsync(c => c.Id == id)).FirstOrDefaultAsync();
         }
     }
 }

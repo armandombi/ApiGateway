@@ -8,9 +8,13 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Threading.Tasks;
+using PaymentApi.Core.Models.DTO;
 
 namespace PaymentApi.Controllers.V1
 {
+    /// <summary>
+    /// Controller to handle all operations related to payments
+    /// </summary>
     [Route("v{version:apiVersion}/[controller]")]
     [ApiVersion("1.0")]
     [ApiController]
@@ -18,13 +22,26 @@ namespace PaymentApi.Controllers.V1
     {
         private readonly IPaymentService _paymentService;
 
+        /// <summary>
+        /// Constructor to initialize all the services and dependencies used in the payment controller
+        /// </summary>
+        /// <param name="paymentService">The service to handles all operations related to payments</param>
         public PaymentController(IPaymentService paymentService)
         {
             _paymentService = paymentService;
         }
 
 
+        /// <summary>
+        /// Process a payment
+        /// </summary>
+        /// <param name="id">The payment unique identifier</param>
+        /// <param name="request">The payment request containing the information to be processed</param>
+        /// <returns>A created response if the process is successful or a bad request response if the process fails</returns>
         [HttpPost("{id:guid}")]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(500)]
         public async Task<IActionResult> Process([FromRoute] Guid id, [FromBody][Required] PaymentRequest request)
         {
             try
@@ -34,6 +51,34 @@ namespace PaymentApi.Controllers.V1
 
                 var path = HttpContext.Request.Path.Value;
                 return Created($"{path}", null);
+            }
+            catch (Exception exception)
+            {
+                Log.Error($"{MethodBase.GetCurrentMethod()?.DeclaringType} failed with exception {JsonConvert.SerializeObject(exception)}");
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        /// <summary>
+        /// Retrieve an existing payment
+        /// </summary>
+        /// <param name="id">The payment unique identifier</param>
+        /// <returns>The payment details or a not found response</returns>
+        [HttpGet("{id:guid}")]
+        [ProducesResponseType(typeof(PaymentDto), 200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
+        public async Task<IActionResult> Get([FromRoute] Guid id)
+        {
+            try
+            {
+                var paymentDocument = await _paymentService.GetPayment(id);
+                if (paymentDocument == null)
+                    return NotFound($"Payment id: {id} was not found");
+
+                var paymentDetails = new PaymentDto(paymentDocument);
+                return Ok(paymentDetails);
             }
             catch (Exception exception)
             {
