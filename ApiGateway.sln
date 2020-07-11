@@ -3,12 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentApi", "PaymentApi\PaymentApi.csproj", "{5EE3DB9F-886A-4AB2-92B5-DD98ED3546B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentApi", "PaymentApi\PaymentApi.csproj", "{5EE3DB9F-886A-4AB2-92B5-DD98ED3546B6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9439B902-DBB4-42F3-93E7-ECB90BE5C929}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentApi.Core", "PaymentApi.Core\PaymentApi.Core.csproj", "{672EC2F7-9A7D-4813-86BD-92C7AE9EBF32}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentApi.Infrastructure", "PaymentApi.Infrastructure\PaymentApi.Infrastructure.csproj", "{7B9FE4BE-F8C0-4CC9-B535-2754B96FE4F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankApiSimulator", "BankApiSimulator\BankApiSimulator.csproj", "{687BC02A-D973-4451-8204-2293F338116A}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{188D15F6-1F6D-4E64-8B53-36171A32A2D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway.Tests", "ApiGateway.Tests\ApiGateway.Tests.csproj", "{4845F176-19CB-4BF1-97A1-90B48AFC8AE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +30,26 @@ Global
 		{5EE3DB9F-886A-4AB2-92B5-DD98ED3546B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EE3DB9F-886A-4AB2-92B5-DD98ED3546B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EE3DB9F-886A-4AB2-92B5-DD98ED3546B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{672EC2F7-9A7D-4813-86BD-92C7AE9EBF32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{672EC2F7-9A7D-4813-86BD-92C7AE9EBF32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{672EC2F7-9A7D-4813-86BD-92C7AE9EBF32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{672EC2F7-9A7D-4813-86BD-92C7AE9EBF32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B9FE4BE-F8C0-4CC9-B535-2754B96FE4F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B9FE4BE-F8C0-4CC9-B535-2754B96FE4F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B9FE4BE-F8C0-4CC9-B535-2754B96FE4F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B9FE4BE-F8C0-4CC9-B535-2754B96FE4F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{687BC02A-D973-4451-8204-2293F338116A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{687BC02A-D973-4451-8204-2293F338116A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{687BC02A-D973-4451-8204-2293F338116A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{687BC02A-D973-4451-8204-2293F338116A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{188D15F6-1F6D-4E64-8B53-36171A32A2D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{188D15F6-1F6D-4E64-8B53-36171A32A2D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{188D15F6-1F6D-4E64-8B53-36171A32A2D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{188D15F6-1F6D-4E64-8B53-36171A32A2D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4845F176-19CB-4BF1-97A1-90B48AFC8AE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4845F176-19CB-4BF1-97A1-90B48AFC8AE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4845F176-19CB-4BF1-97A1-90B48AFC8AE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4845F176-19CB-4BF1-97A1-90B48AFC8AE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  mongodb:
+    image: mongo:latest
+    restart: always
+
+  bankapi:
+    image: ${DOCKER_REGISTRY-}bankapi
+    build:
+      context: .
+      dockerfile: BankApiSimulator/Dockerfile
+
+  paymentapi:
+    image: ${DOCKER_REGISTRY-}paymentapi
+    build:
+      context: .
+      dockerfile: PaymentApi/Dockerfile
+    depends_on:
+      - mongodb
+      - bankapi
