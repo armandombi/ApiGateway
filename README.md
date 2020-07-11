@@ -25,7 +25,7 @@ git clone https://github.com/armandombi/ApiGateway.git
 
 - Once you have cloned the repository change into the projects folder and run docker-compose up:
 
-- ![Compose](http://g.recordit.co/2pOdxoSFq8.gif)
+- ![Compose](http://g.recordit.co/oVPXPzyjzR.gif)
 
    This will start the process of downloading all the necessary images, building the dependencies and starting the api so whait untill this process has finished
 
@@ -36,12 +36,15 @@ git clone https://github.com/armandombi/ApiGateway.git
 
 - Now you can start testing the API
 
+* You can also choose to run the project by opening the solution in Visual Studio 2019 and running the Docker compose from within
+
 ## Features
 
 - A Payment API that allos the processing and retrieval of payments
 - A Bank Simulation API that allows to mock bank payment processing
 - Implementation of Swagger in main API to provide user documentation and a client to test the API
 - Containerization using docker-compose to provide a simple way to execute and test the API
+- Using [Clean Architecture](https://pusher.com/tutorials/clean-architecture-introduction) 
 - Authorization to provide security to the API
 - Added Log capabilities throught the application that can be easily expanded and extended using different Serilog sinks
 
@@ -69,6 +72,7 @@ To deploy this to a live system we can add yml file to provide instructions to b
 - Add metrics capabilities by using Application insights, Raygun or any other metrics tool used by the company (This can be done with Serilog sinks)
 - Adding nginx and letsencrypt to provide SSL capabilities
 - Implement Event Sourcing to improve message tracing, reliability and scalability capabilities
+- Add an API Gateway such as Ocelot to better handle requests in a centralized way, load balancing, attack protection among other features
 
 ## License
 
