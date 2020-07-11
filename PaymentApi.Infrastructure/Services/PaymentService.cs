@@ -46,6 +46,7 @@ namespace PaymentApi.Infrastructure.Services
                         Amount = request.Amount,
                         BankPaymentId = bankResponse.Id,
                         CardNumber = request.CardNumber,
+                        CardHolderName = request.CardHolderName,
                         Created = DateTimeOffset.UtcNow,
                         Status = bankResponse.Status == TransactionStatus.Complete ? PaymentStatus.Complete: PaymentStatus.Failed,
                         Currency = request.Currency

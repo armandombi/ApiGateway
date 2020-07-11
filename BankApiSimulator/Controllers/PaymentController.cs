@@ -23,11 +23,14 @@ namespace BankApiSimulator.Controllers
         {
             try
             {
-                var bankResponse = request.CardHolderName == "FailedRequest"
-                    ? new BankResponse {Id = Guid.NewGuid(), Status = TransactionStatus.Failed}
-                    : new BankResponse {Id = Guid.NewGuid(), Status = TransactionStatus.Complete};
+                return await Task.Run(() =>
+                {
+                    var bankResponse = request.CardHolderName == "FailedRequest"
+                        ? new BankResponse {Id = Guid.NewGuid(), Status = TransactionStatus.Failed}
+                        : new BankResponse {Id = Guid.NewGuid(), Status = TransactionStatus.Complete};
 
-                return Ok(bankResponse);
+                    return Ok(bankResponse);
+                });
             }
             catch (Exception exception)
             {

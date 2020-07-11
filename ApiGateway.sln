@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankApiSimulator", "BankApi
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{188D15F6-1F6D-4E64-8B53-36171A32A2D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway.Tests", "ApiGateway.Tests\ApiGateway.Tests.csproj", "{4845F176-19CB-4BF1-97A1-90B48AFC8AE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{188D15F6-1F6D-4E64-8B53-36171A32A2D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{188D15F6-1F6D-4E64-8B53-36171A32A2D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{188D15F6-1F6D-4E64-8B53-36171A32A2D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4845F176-19CB-4BF1-97A1-90B48AFC8AE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4845F176-19CB-4BF1-97A1-90B48AFC8AE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4845F176-19CB-4BF1-97A1-90B48AFC8AE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4845F176-19CB-4BF1-97A1-90B48AFC8AE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -39,6 +39,9 @@ namespace PaymentApi.Controllers.V1
         /// </summary>
         /// <param name="id">The payment unique identifier</param>
         /// <param name="request">The payment request containing the information to be processed</param>
+        /// <response code="201">Payment created</response>
+        /// <response code="400">Payment has missing/invalid values</response>
+        /// <response code="500">There is an issue processing the payment</response>
         /// <returns>A created response if the process is successful or a bad request response if the process fails</returns>
         [HttpPost("{id:guid}")]
         [ProducesResponseType(201)]
@@ -65,6 +68,10 @@ namespace PaymentApi.Controllers.V1
         /// Retrieve an existing payment
         /// </summary>
         /// <param name="id">The payment unique identifier</param>
+        /// <response code="200">The payment details</response>
+        /// <response code="400">The request has missing/invalid values</response>
+        /// <response code="404">The payment with the id specified does not exist</response>
+        /// <response code="500">There is an issue retrieving the payment</response>
         /// <returns>The payment details or a not found response</returns>
         [HttpGet("{id:guid}")]
         [ProducesResponseType(typeof(PaymentDto), 200)]

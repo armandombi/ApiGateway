@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using PaymentApi.Core.Interfaces;
+using PaymentApi.Core.Settings;
 using PaymentApi.Infrastructure.Services;
+using System;
+using System.Net.Http;
 
 namespace PaymentApi.Extensions
 {
@@ -21,7 +21,11 @@ namespace PaymentApi.Extensions
         {
             services
                 .AddScoped<IPaymentService, PaymentService>()
-                .AddScoped<IAcquiringBankService, AcquiringBankService>();
+                .AddScoped<IAcquiringBankService>(serv =>
+               {
+                   var settings = serv.GetRequiredService<IOptions<BankApiSettings>>().Value;
+                   return new AcquiringBankService(new HttpClient { BaseAddress = new Uri(settings.BaseUrl ?? ""), Timeout = TimeSpan.FromSeconds(settings.TimeoutSeconds) });
+               });
 
         }
     }

@@ -8,6 +8,10 @@ namespace PaymentApi.Core.Models.DTO
 {
     public class PaymentDto
     {
+        public PaymentDto()
+        {
+            
+        }
         public PaymentDto(PaymentDocument payment)
         {
             Id = payment.Id;
@@ -16,7 +20,7 @@ namespace PaymentApi.Core.Models.DTO
             Amount = payment.Amount;
             Currency = payment.Currency;
             CardNumber = payment.CardNumber.MaskCardNumber();
-            CardHolderName = CardHolderName;
+            CardHolderName = payment.CardHolderName;
             BankPaymentId = payment.BankPaymentId;
         }
 

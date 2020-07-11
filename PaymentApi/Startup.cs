@@ -18,8 +18,11 @@ namespace PaymentApi
         }
 
         public IConfiguration Configuration { get; }
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to add services to the container.
+        /// </summary>
+        /// <param name="services">The services collection to add to the API</param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
@@ -32,7 +35,12 @@ namespace PaymentApi
             services.AddScopedServices();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline. 
+        /// </summary>
+        /// <param name="app">The application builder for the request pipeline</param>
+        /// <param name="env">The environment the application is running</param>
+        /// <param name="apiVersion">The information for the different api versions</param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider apiVersion)
         {
             if (env.IsDevelopment())
@@ -44,10 +52,8 @@ namespace PaymentApi
             app.UsePerformance();
             app.UseHttpsRedirection();
             app.UseRouting();
-
             app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseSwaggerGen(apiVersion);
 
             app.UseEndpoints(endpoints =>

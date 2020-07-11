@@ -13,6 +13,7 @@ namespace PaymentApi.Core.Models
         public decimal Amount { get; set; }
         public string Currency { get; set; }
         public string CardNumber { get; set; }
+        public string CardHolderName { get; set; }
         public Guid BankPaymentId { get; set; }
     }
 }

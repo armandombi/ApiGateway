@@ -22,22 +22,26 @@ namespace PaymentApi.Core.Helpers
 
         protected override async Task<AuthenticateResult> HandleAuthenticateAsync()
         {
-            if (!Request.Headers.ContainsKey("Authorization"))
-                return AuthenticateResult.Fail("Missing Authorization Header");
-            Request.Headers.TryGetValue("Authorization", out var auth);
+            return await Task.Run(() =>
+            {
+                if (!Request.Headers.ContainsKey("Authorization"))
+                    return AuthenticateResult.Fail("Missing Authorization Header");
+                Request.Headers.TryGetValue("Authorization", out var auth);
 
-            if (!auth.First().Contains("Bearer"))
-                return AuthenticateResult.Fail("Missing Bearer in Authorization");
+                if (!auth.First().Contains("Bearer"))
+                    return AuthenticateResult.Fail("Missing Bearer in Authorization");
 
-            var claims = new[] {
-                new Claim(ClaimTypes.NameIdentifier, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.Name, "DummyUser"),
-            };
-            var identity = new ClaimsIdentity(claims, Scheme.Name);
-            var principal = new ClaimsPrincipal(identity);
-            var ticket = new AuthenticationTicket(principal, Scheme.Name);
+                var claims = new[]
+                {
+                    new Claim(ClaimTypes.NameIdentifier, Guid.NewGuid().ToString()),
+                    new Claim(ClaimTypes.Name, "DummyUser"),
+                };
+                var identity = new ClaimsIdentity(claims, Scheme.Name);
+                var principal = new ClaimsPrincipal(identity);
+                var ticket = new AuthenticationTicket(principal, Scheme.Name);
 
-            return AuthenticateResult.Success(ticket);
+                return AuthenticateResult.Success(ticket);
+            });
         }
     }
 }

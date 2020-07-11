@@ -9,6 +9,8 @@
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
     <UserSecretsId>da42d6e7-2e07-4ada-bcf7-d4d232fddc80</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
+    <DockerServiceUrl>https://localhost:5001</DockerServiceUrl>
   </PropertyGroup>
 
   <ItemGroup>
