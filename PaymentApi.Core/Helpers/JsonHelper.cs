@@ -5,8 +5,16 @@ using System.Net.Http.Headers;
 
 namespace PaymentApi.Core.Helpers
 {
+    /// <summary>
+    /// Extension method to handle data conversion
+    /// </summary>
     public static class JsonHelper
     {
+        /// <summary>
+        /// Converts an object into the appropriate content to be sent by a http client
+        /// </summary>
+        /// <param name="obj">The data to be transferred</param>
+        /// <returns></returns>
         public static ByteArrayContent ConvertToByteContent(object obj)
         {
             try
