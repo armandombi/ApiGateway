@@ -18,6 +18,11 @@ namespace PaymentApi.Infrastructure.Services
         {
             _httpClient = httpClient;
         }
+        /// <summary>
+        /// Send a payment request to the bank api for processing
+        /// </summary>
+        /// <param name="request">The payment information</param>
+        /// <returns>A response from the bank that indicates the processed id and the resulting status</returns>
         public async Task<BankResponse> SendPayment(PaymentRequest request)
         {
             try

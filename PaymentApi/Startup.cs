@@ -5,7 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PaymentApi.Extensions;
-using PaymentApi.Extensions.Swagger;
 using Serilog;
 
 namespace PaymentApi

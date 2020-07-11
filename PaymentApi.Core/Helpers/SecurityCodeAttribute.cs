@@ -7,6 +7,11 @@ namespace PaymentApi.Core.Helpers
 {
     internal class SecurityCodeAttribute : ValidationAttribute
     {
+        /// <summary>
+        /// Validates if the payment request security code is valid
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public override bool IsValid(object value)
         {
             try

@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace PaymentApi.Core.Helpers
 {
+    /// <summary>
+    /// Customized authentication handler to manage authorization requests
+    /// </summary>
     public class ApiAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
     {
         public ApiAuthenticationHandler(
@@ -27,7 +30,7 @@ namespace PaymentApi.Core.Helpers
                 if (!Request.Headers.ContainsKey("Authorization"))
                     return AuthenticateResult.Fail("Missing Authorization Header");
                 Request.Headers.TryGetValue("Authorization", out var auth);
-
+                
                 if (!auth.First().Contains("Bearer"))
                     return AuthenticateResult.Fail("Missing Bearer in Authorization");
 
