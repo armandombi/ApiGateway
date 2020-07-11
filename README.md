@@ -25,14 +25,14 @@ git clone https://github.com/armandombi/ApiGateway.git
 
 - Once you have cloned the repository change into the projects folder and run docker-compose up:
 
-![Recordit GIF](http://g.recordit.co/2pOdxoSFq8.gif)
+- ![Compose](http://g.recordit.co/2pOdxoSFq8.gif)
 
-This will start the process of downloading all the necessary images, building the dependencies and starting the api so whait untill this process has finished
+   This will start the process of downloading all the necessary images, building the dependencies and starting the api so whait untill this process has finished
 
 - Open a new browser tab and navigate to http://localhost:5000/index.html and the swagger API page should be displayed
 - In order to start making requests from swagger you will need to do some fake authentication by adding the Authentication Header with the Bearer keyword inside as shown:
 
-![Recordit GIF](http://g.recordit.co/hOoEaJlIQe.gif)
+- ![Auth](http://g.recordit.co/hOoEaJlIQe.gif)
 
 - Now you can start testing the API
 
