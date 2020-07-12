@@ -7,7 +7,7 @@ namespace PaymentApi.Core.Helpers
     internal class CurrencyAttribute : ValidationAttribute
     {
         /// <summary>
-        /// Validates if the currency code from the payment request is a valid ISO 4217 code
+        ///     Validates if the currency code from the payment request is a valid ISO 4217 code
         /// </summary>
         /// <param name="value">The currency code to verify</param>
         /// <returns></returns>
@@ -27,12 +27,11 @@ namespace PaymentApi.Core.Helpers
                         return null;
                     }
                 })
-                .Where(ri => ri != null && ri.ISOCurrencySymbol == (string)value)
+                .Where(ri => ri != null && ri.ISOCurrencySymbol == (string) value)
                 .Select(ri => ri.CurrencySymbol)
                 .FirstOrDefault();
 
             return symbol != null;
-
         }
     }
 }

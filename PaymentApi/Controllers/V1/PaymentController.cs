@@ -1,20 +1,20 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using PaymentApi.Core.Interfaces;
-using PaymentApi.Core.Models;
-using Serilog;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using PaymentApi.Core.Interfaces;
+using PaymentApi.Core.Models;
 using PaymentApi.Core.Models.DTO;
+using Serilog;
 
 namespace PaymentApi.Controllers.V1
 {
     /// <summary>
-    /// Controller to handle all operations related to payments
+    ///     Controller to handle all operations related to payments
     /// </summary>
     [Route("v{version:apiVersion}/[controller]")]
     [ApiVersion("1.0")]
@@ -25,7 +25,7 @@ namespace PaymentApi.Controllers.V1
         private readonly IPaymentService _paymentService;
 
         /// <summary>
-        /// Constructor to initialize all the services and dependencies used in the payment controller
+        ///     Constructor to initialize all the services and dependencies used in the payment controller
         /// </summary>
         /// <param name="paymentService">The service to handles all operations related to payments</param>
         public PaymentController(IPaymentService paymentService)
@@ -35,7 +35,7 @@ namespace PaymentApi.Controllers.V1
 
 
         /// <summary>
-        /// Process a payment
+        ///     Process a payment
         /// </summary>
         /// <param name="id">The payment unique identifier</param>
         /// <param name="request">The payment request containing the information to be processed</param>
@@ -47,7 +47,7 @@ namespace PaymentApi.Controllers.V1
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(500)]
-        public async Task<IActionResult> Process([FromRoute] Guid id, [FromBody][Required] PaymentRequest request)
+        public async Task<IActionResult> Process([FromRoute] Guid id, [FromBody] [Required] PaymentRequest request)
         {
             try
             {
@@ -59,13 +59,14 @@ namespace PaymentApi.Controllers.V1
             }
             catch (Exception exception)
             {
-                Log.Error($"{MethodBase.GetCurrentMethod()?.DeclaringType} failed with exception {JsonConvert.SerializeObject(exception)}");
+                Log.Error(
+                    $"{MethodBase.GetCurrentMethod()?.DeclaringType} failed with exception {JsonConvert.SerializeObject(exception)}");
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
 
         /// <summary>
-        /// Retrieve an existing payment
+        ///     Retrieve an existing payment
         /// </summary>
         /// <param name="id">The payment unique identifier</param>
         /// <response code="200">The payment details</response>
@@ -91,10 +92,10 @@ namespace PaymentApi.Controllers.V1
             }
             catch (Exception exception)
             {
-                Log.Error($"{MethodBase.GetCurrentMethod()?.DeclaringType} failed with exception {JsonConvert.SerializeObject(exception)}");
+                Log.Error(
+                    $"{MethodBase.GetCurrentMethod()?.DeclaringType} failed with exception {JsonConvert.SerializeObject(exception)}");
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
-
     }
 }

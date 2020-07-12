@@ -1,27 +1,26 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.IO.Compression;
+using System.Linq;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.DependencyInjection;
-using System.IO.Compression;
-using System.Linq;
 
 namespace PaymentApi.Extensions
 {
     /// <summary>
-    /// Extension to handle performance configuration for the API
+    ///     Extension to handle performance configuration for the API
     /// </summary>
     internal static class PerformanceExtension
     {
         /// <summary>
-        /// Adds configurations to help API performance
+        ///     Adds configurations to help API performance
         /// </summary>
         /// <param name="services">The API service collection</param>
         internal static void AddPerformance(this IServiceCollection services)
         {
-
             services.AddResponseCompression(options =>
             {
                 options.Providers.Add<GzipCompressionProvider>();
-                options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[] { "image/svg+xml" });
+                options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[] {"image/svg+xml"});
             });
 
 

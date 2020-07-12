@@ -13,8 +13,9 @@ namespace PaymentApi.Infrastructure.Services
 {
     public class PaymentService : IPaymentService
     {
-        private readonly IAppDbContext _db;
         private readonly IAcquiringBankService _bankService;
+        private readonly IAppDbContext _db;
+
         public PaymentService(IAppDbContext db, IAcquiringBankService bankService)
         {
             _db = db;
@@ -22,7 +23,7 @@ namespace PaymentApi.Infrastructure.Services
         }
 
         /// <summary>
-        /// Method to process a payment from a payment request.
+        ///     Method to process a payment from a payment request.
         /// </summary>
         /// <param name="id">The payment unique identifier</param>
         /// <param name="request">The information about the payment</param>
@@ -32,7 +33,8 @@ namespace PaymentApi.Infrastructure.Services
             try
             {
                 Log.Information($"Processing payment {id}");
-                var paymentDocument = await (await _db.PaymentsCollection.FindAsync(x => x.Id == id)).FirstOrDefaultAsync();
+                var paymentDocument =
+                    await (await _db.PaymentsCollection.FindAsync(x => x.Id == id)).FirstOrDefaultAsync();
 
                 if (paymentDocument == null)
                 {
@@ -48,7 +50,9 @@ namespace PaymentApi.Infrastructure.Services
                         CardNumber = request.CardNumber,
                         CardHolderName = request.CardHolderName,
                         Created = DateTimeOffset.UtcNow,
-                        Status = bankResponse.Status == TransactionStatus.Complete ? PaymentStatus.Complete: PaymentStatus.Failed,
+                        Status = bankResponse.Status == TransactionStatus.Complete
+                            ? PaymentStatus.Complete
+                            : PaymentStatus.Failed,
                         Currency = request.Currency
                     };
 
@@ -59,13 +63,14 @@ namespace PaymentApi.Infrastructure.Services
             }
             catch (Exception exception)
             {
-                Log.Error($"{MethodBase.GetCurrentMethod()?.DeclaringType} failed with exception {JsonConvert.SerializeObject(exception)}");
+                Log.Error(
+                    $"{MethodBase.GetCurrentMethod()?.DeclaringType} failed with exception {JsonConvert.SerializeObject(exception)}");
                 throw;
             }
         }
 
         /// <summary>
-        /// Method to retrieve and return a payment details based on the unique payment identifier
+        ///     Method to retrieve and return a payment details based on the unique payment identifier
         /// </summary>
         /// <param name="id">The payment unique identifier</param>
         /// <returns>The payment details or a null object if the payment is not found</returns>

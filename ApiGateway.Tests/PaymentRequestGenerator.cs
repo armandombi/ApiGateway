@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using PaymentApi.Core.Models;
+﻿using PaymentApi.Core.Models;
 
 namespace ApiGateway.Tests
 {

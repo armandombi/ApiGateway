@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PaymentApi.Core.Settings
+﻿namespace PaymentApi.Core.Settings
 {
     public class BankApiSettings
     {

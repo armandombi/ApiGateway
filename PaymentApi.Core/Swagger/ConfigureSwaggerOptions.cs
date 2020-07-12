@@ -10,13 +10,16 @@ namespace PaymentApi.Core.Swagger
 {
     public class ConfigureSwaggerOptions : IConfigureOptions<SwaggerGenOptions>
     {
-        readonly IApiVersionDescriptionProvider _provider;
-        readonly IConfiguration _configuration;
+        private readonly IConfiguration _configuration;
+        private readonly IApiVersionDescriptionProvider _provider;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ConfigureSwaggerOptions"/> class.
+        ///     Initializes a new instance of the <see cref="ConfigureSwaggerOptions" /> class.
         /// </summary>
-        /// <param name="provider">The <see cref="IApiVersionDescriptionProvider">provider</see> used to generate Swagger documents.</param>
+        /// <param name="provider">
+        ///     The <see cref="IApiVersionDescriptionProvider">provider</see> used to generate Swagger
+        ///     documents.
+        /// </param>
         /// <param name="configuration">The <see cref="IConfiguration">configuration</see> used to access settings for swagger.</param>
         public ConfigureSwaggerOptions(IApiVersionDescriptionProvider provider, IConfiguration configuration)
         {
@@ -33,16 +36,17 @@ namespace PaymentApi.Core.Swagger
                 options.SwaggerDoc(description.GroupName, CreateInfoForApiVersion(description));
             }
 
-            options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+            options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
             {
-                Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                Description =
+                    "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
                 Name = "Authorization",
                 In = ParameterLocation.Header,
                 Type = SecuritySchemeType.ApiKey,
                 Scheme = "Bearer"
             });
 
-            options.AddSecurityRequirement(new OpenApiSecurityRequirement()
+            options.AddSecurityRequirement(new OpenApiSecurityRequirement
             {
                 {
                     new OpenApiSecurityScheme
@@ -54,26 +58,23 @@ namespace PaymentApi.Core.Swagger
                         },
                         Scheme = "oauth2",
                         Name = "Bearer",
-                        In = ParameterLocation.Header,
+                        In = ParameterLocation.Header
                     },
-                    new List<string> ()
+                    new List<string>()
                 }
             });
         }
 
         private static OpenApiInfo CreateInfoForApiVersion(ApiVersionDescription description)
         {
-            var info = new OpenApiInfo()
+            var info = new OpenApiInfo
             {
-                Title = $"Payment API",
-                Description = $"Payment API",
-                Version = description.GroupName,
+                Title = "Payment API",
+                Description = "Payment API",
+                Version = description.GroupName
             };
 
-            if (description.IsDeprecated)
-            {
-                info.Description += " This API version has been deprecated.";
-            }
+            if (description.IsDeprecated) info.Description += " This API version has been deprecated.";
 
             return info;
         }

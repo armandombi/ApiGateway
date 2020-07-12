@@ -7,12 +7,12 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 namespace PaymentApi.Core.Swagger
 {
     /// <summary>
-    /// Operation filter to set default swagger values
+    ///     Operation filter to set default swagger values
     /// </summary>
     public class SwaggerDefaultValues : IOperationFilter
     {
         /// <summary>
-        /// Applies the filter to the specified operation using the given context.
+        ///     Applies the filter to the specified operation using the given context.
         /// </summary>
         /// <param name="operation">The <see cref="OpenApiOperation">operation</see> to apply the filter to.</param>
         /// <param name="context">The current operation filter <see cref="OperationFilterContext">context</see>.</param>
@@ -22,24 +22,15 @@ namespace PaymentApi.Core.Swagger
 
             operation.Deprecated = apiDescription.IsDeprecated();
 
-            if (operation.Parameters == null)
-            {
-                return;
-            }
+            if (operation.Parameters == null) return;
 
-            object[] attributes = context.ApiDescription.CustomAttributes().ToArray();
+            var attributes = context.ApiDescription.CustomAttributes().ToArray();
             if (attributes.OfType<AllowAnonymousAttribute>().Any())
-            {
                 // Controller / action allows anonymous calls
                 return;
-            }
 
             var authorizeAttributes = attributes.OfType<AuthorizeAttribute>().ToArray();
-            if (authorizeAttributes.Length == 0)
-            {
-                return;
-            }
-
+            if (authorizeAttributes.Length == 0) return;
         }
     }
 }

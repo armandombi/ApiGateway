@@ -4,12 +4,12 @@ using Microsoft.Extensions.DependencyInjection;
 namespace PaymentApi.Extensions
 {
     /// <summary>
-    /// Extension to handle Api versioning
+    ///     Extension to handle Api versioning
     /// </summary>
     public static class ApiVersioningExtension
     {
         /// <summary>
-        /// Adds the required setting to configure versioning on the api
+        ///     Adds the required setting to configure versioning on the api
         /// </summary>
         /// <param name="services"></param>
         public static void AddApiVersioningOptions(this IServiceCollection services)
@@ -28,7 +28,6 @@ namespace PaymentApi.Extensions
                     options.GroupNameFormat = "'v'VVV";
                     options.SubstituteApiVersionInUrl = true;
                 });
-
         }
     }
 }

@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PaymentApi.Core.Helpers
+﻿namespace PaymentApi.Core.Helpers
 {
     /// <summary>
-    /// Extension method to deal with operations on the Payment Card
+    ///     Extension method to deal with operations on the Payment Card
     /// </summary>
     public static class CardHelper
     {
         /// <summary>
-        /// Adds a special character to mask the card number and only reveal the last 4 digits
+        ///     Adds a special character to mask the card number and only reveal the last 4 digits
         /// </summary>
         /// <param name="cardNumber">The payment card number</param>
         /// <returns>The masked payment card number</returns>
