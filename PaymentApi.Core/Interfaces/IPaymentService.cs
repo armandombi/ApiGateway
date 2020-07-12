@@ -1,6 +1,6 @@
-﻿using PaymentApi.Core.Models;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using PaymentApi.Core.Models;
 
 namespace PaymentApi.Core.Interfaces
 {

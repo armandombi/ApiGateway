@@ -1,13 +1,13 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using PaymentApi.Core.Models;
-using Serilog;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using PaymentApi.Core.Models;
 using PaymentApi.Core.Models.Enums;
+using Serilog;
 
 namespace BankApiSimulator.Controllers
 {
@@ -15,11 +15,11 @@ namespace BankApiSimulator.Controllers
     [Route("[controller]")]
     public class PaymentController : ControllerBase
     {
-        [HttpPost()]
-        [ProducesResponseType(typeof(BankResponse),200)]
+        [HttpPost]
+        [ProducesResponseType(typeof(BankResponse), 200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(500)]
-        public async Task<IActionResult> Process([FromBody][Required] PaymentRequest request)
+        public async Task<IActionResult> Process([FromBody] [Required] PaymentRequest request)
         {
             try
             {
@@ -34,7 +34,8 @@ namespace BankApiSimulator.Controllers
             }
             catch (Exception exception)
             {
-                Log.Error($"{MethodBase.GetCurrentMethod()?.DeclaringType} failed with exception {JsonConvert.SerializeObject(exception)}");
+                Log.Error(
+                    $"{MethodBase.GetCurrentMethod()?.DeclaringType} failed with exception {JsonConvert.SerializeObject(exception)}");
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }

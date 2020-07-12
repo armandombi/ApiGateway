@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using PaymentApi.Core.Helpers;
 using PaymentApi.Core.Models.Enums;
 
@@ -10,8 +8,8 @@ namespace PaymentApi.Core.Models.DTO
     {
         public PaymentDto()
         {
-            
         }
+
         public PaymentDto(PaymentDocument payment)
         {
             Id = payment.Id;

@@ -1,5 +1,5 @@
-﻿using PaymentApi.Core.Models.Enums;
-using System;
+﻿using System;
+using PaymentApi.Core.Models.Enums;
 
 namespace PaymentApi.Core.Models
 {

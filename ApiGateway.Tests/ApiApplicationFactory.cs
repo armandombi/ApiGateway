@@ -4,13 +4,14 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
 using Mongo2Go;
 using MongoDB.Driver;
+using PaymentApi;
 using PaymentApi.Core.Interfaces;
 using PaymentApi.Infrastructure.Data;
 using PaymentApi.Infrastructure.Services;
 
 namespace ApiGateway.Tests
 {
-    public class ApiApplicationFactory : WebApplicationFactory<PaymentApi.Startup>
+    public class ApiApplicationFactory : WebApplicationFactory<Startup>
     {
         private static MongoDbRunner _runner;
         private static MongoClient _client;
